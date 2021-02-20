@@ -1,0 +1,28 @@
+﻿<Application x:Class="Calculator.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:unity="clr-namespace:Calculator.Container.Unity"
+             xmlns:mainWindow="clr-namespace:Calculator.ViewModels.MainWindow"
+             xmlns:views="clr-namespace:Calculator.Views"
+             StartupUri="Windows/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Styles/StyleDatas.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+
+            <mainWindow:MainWindowViewModel x:Key="MainViewModelData"/>
+
+            <DataTemplate x:Key="CalculatorTemplate">
+                <views:CalculatorView/>
+            </DataTemplate>
+
+            <Style x:Key="MainContentControlStyle" TargetType="ContentControl" >
+                <Setter Property="ContentTemplate" Value="{StaticResource CalculatorTemplate}"/>
+            </Style>
+
+            <unity:ServiceLocator x:Key="ServiceLocator"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
